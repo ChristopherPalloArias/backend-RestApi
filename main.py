@@ -7,10 +7,9 @@ app = FastAPI()
 
 # Configuración de CORS
 origins = [
+    "https://frontendrestapi-eznio.ondigitalocean.app",
     "http://localhost:8080",
-    "http://127.0.0.1:8080",
-    "https://backendrestapi-484g6.ondigitalocean.app",
-    "https://frontendrestapi-eznio.ondigitalocean.app"
+    "http://127.0.0.1:8080" 
 ]
 
 app.add_middleware(
