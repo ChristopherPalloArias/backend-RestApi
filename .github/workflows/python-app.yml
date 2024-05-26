@@ -26,15 +26,10 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Deploy to DigitalOcean
-      if: ${{ github.event_name == 'push' }}
-      env:
-        DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
-        APP_ID: ${{ secrets.DIGITALOCEAN_APP_ID }}
-      run: |
-        curl -X POST -H "Content-Type: application/json" \
-        -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
-        https://api.digitalocean.com/v2/apps/$APP_ID/deployments
+      - name: Deploy to DigitalOcean
+        if: ${{ github.event_name == 'push' }}
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" https://api.digitalocean.com/v2/apps/$APP_ID/deployments
