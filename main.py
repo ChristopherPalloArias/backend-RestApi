@@ -7,9 +7,9 @@ app = FastAPI()
 
 # Configuración de CORS
 origins = [
-    "https://frontendrestapi-eznio.ondigitalocean.app",
     "http://localhost:8080",
-    "http://127.0.0.1:8080" 
+    "http://127.0.0.1:8080",
+    "https://frontendrestapi-eznio.ondigitalocean.app"
 ]
 
 app.add_middleware(
@@ -30,7 +30,7 @@ db_config = {
 
 # Modelo de datos para la solicitud de login
 class User(BaseModel):
-    email: str
+    username: str
     password: str
 
 @app.post("/login")
@@ -39,7 +39,7 @@ async def login(user: User):
     cursor = conn.cursor(dictionary=True)
     
     query = "SELECT * FROM usuarios WHERE username = %s AND password = %s"
-    cursor.execute(query, (user.email, user.password))
+    cursor.execute(query, (user.username, user.password))
     result = cursor.fetchall()
     
     cursor.close()
