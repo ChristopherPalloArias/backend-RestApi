@@ -1,4 +1,4 @@
-name: Deployment python-app
+name: Deployment pipeline
 
 on:
   push:
