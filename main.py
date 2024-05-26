@@ -10,7 +10,7 @@ origins = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "https://backendrestapi-484g6.ondigitalocean.app",
-    "https://starfish-app-i24dx.ondigitalocean.app"
+    "https://frontendrestapi-eznio.ondigitalocean.app"
 ]
 
 app.add_middleware(
